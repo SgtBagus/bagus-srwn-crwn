@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import HomePge from './homepage.component';
+import HomePge from './pages/homepage/homepage.component';
 
 function App() {
   return (
