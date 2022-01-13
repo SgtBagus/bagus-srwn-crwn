@@ -35,8 +35,6 @@ class App extends Component {
               id,
               ...snapShot.data(),
             }
-          }, () => {
-            console.log(this.state);
           })
         });
       } else {
