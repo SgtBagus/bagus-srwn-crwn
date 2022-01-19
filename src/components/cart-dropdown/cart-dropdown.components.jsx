@@ -4,13 +4,14 @@ import { createStructuredSelector } from 'reselect';
 import { useNavigate } from 'react-router-dom';
 
 import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { toggleCartHidden } from '../../redux/cart/cart.action'
 
 import CustomButton from '../custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.components';
 
 import './cart-dropdown.style.scss';
 
-const CardDropdown = ({ cartItems, history }) => {
+const CardDropdown = ({ cartItems, dispatch }) => {
     const navigate = useNavigate();
     return (
         <div className="cart-dropdown">
@@ -27,7 +28,10 @@ const CardDropdown = ({ cartItems, history }) => {
                 }
             </div>
             <CustomButton
-                onClick={() => navigate('/checkout')}
+                onClick={() => {
+                    navigate('/checkout');
+                    dispatch(toggleCartHidden()); 
+                }}
             >
                 GO TO CHECKOUT
             </CustomButton>
