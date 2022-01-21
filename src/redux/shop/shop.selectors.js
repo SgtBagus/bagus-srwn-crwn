@@ -11,4 +11,9 @@ export const selectCollections = createSelector(
         const { collections } = shop;
         return collections;
     }
-)
+);
+
+export const selectCollection = () => (createSelector(
+    [selectCollections],
+    collections => collections
+));

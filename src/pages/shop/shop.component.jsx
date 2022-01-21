@@ -4,9 +4,10 @@ import CollectionOverview from '../../components/collection-overview/collection-
 
 const ShopPage = () => {
     return (
-    <div className="shop-page">
-        <CollectionOverview />
-    </div>
-)}
+        <div className="shop-page">
+            <CollectionOverview />
+        </div>
+    )
+}
 
 export default ShopPage;
