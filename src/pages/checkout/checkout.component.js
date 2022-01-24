@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.components';
+import StripeCheckoutButton from '../../components/stripe-button/stripe-button.components';
 
 import './checkout.style.scss';
 
@@ -38,6 +39,12 @@ const CheckoutPage = ({
         <div className="total">
             <span>Total: ${total}</span>
         </div>
+        <div className="text-warning">
+            *Pakai nomor Creadit test untuk payments
+            <br />
+            4242 4242 4242 4242 - Exp: 01/*tahun berikutnya CVV: 123
+        </div>
+        <StripeCheckoutButton price={total} />
     </div>
 )
 
