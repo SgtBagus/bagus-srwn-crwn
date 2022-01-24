@@ -8,25 +8,23 @@ import CollectionItem from '../../components/collection-item/collection-item.com
 
 import './collection.style.scss';
 
-const COLLECTION_ID_MAP = {
-    hats: 1,
-    sneakers: 2,
-    jackets: 3,
-    womens: 4,
-    men: 5,
-}
-
-const colectionFilter = (data, type) => data.find(x => x.id === COLLECTION_ID_MAP[type]);
+const colectionFilter = (data, type) => data[type];
 
 const CollectionPage = ({
     collections,
 }) => {
     const { type } = useParams();
-    const items = colectionFilter(collections, type);
+    const collection = colectionFilter(collections, type);
 
+    const { title, items } = collection;
     return (
-        <div className="category">
-            <h2>COLLECTION PAGE</h2>
+        <div className="collection-page">
+            <h2 className='title'>{ title }</h2>
+            <div className="items">
+                {
+                    items.map(x => <CollectionItem key={x.id} item={x} />)
+                }
+            </div>
         </div>
     )
 }

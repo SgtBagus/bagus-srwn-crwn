@@ -13,6 +13,11 @@ export const selectCollections = createSelector(
     }
 );
 
+export const selecCollectionsForPreview = createSelector(
+    [selectCollections],
+    collection => Object.keys(collection).map(x => collection[x])
+)
+
 export const selectCollection = () => (createSelector(
     [selectCollections],
     collections => collections
