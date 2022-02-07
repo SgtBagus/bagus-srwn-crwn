@@ -22,7 +22,7 @@ class App extends Component {
   unsusbcribeFromAuth = null;
 
   componentDidMount = () => {
-    const { setCurrentUser } = this.props;
+    const { currentUser } = this.props;
 
     this.unsusbcribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -31,14 +31,13 @@ class App extends Component {
         userRef.onSnapshot(snapShot => {
           const { id } = snapShot;
           
-          setCurrentUser({
+          currentUser({
             id,
             ...snapShot.data(),
           })
         });
-      } else {
-        setCurrentUser(userAuth)
-      };
+      }
+      currentUser(userAuth);
     })
   }
   
@@ -73,11 +72,11 @@ class App extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  currentUser: user => dispatch(setCurrentUser(user)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
