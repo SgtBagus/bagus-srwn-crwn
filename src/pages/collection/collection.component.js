@@ -13,10 +13,8 @@ const colectionFilter = (data, type) => data[type];
 const CollectionPage = ({
     collections,
 }) => {
-    console.log(collections);
     const { type } = useParams();
     const collection = colectionFilter(collections, type);
-    console.log(collection);
 
     const { title, items } = collection;
     return (
